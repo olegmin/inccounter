@@ -17,4 +17,4 @@ df = pd.DataFrame({
 
 
 # Save data to CSV-file
-df.to_csv('/tmp/incidents.csv', index_label='id')
+df.to_csv('/data/incedents.csv', index_label='id')
