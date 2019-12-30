@@ -10,6 +10,7 @@ def convert(data):
 
 
 def csv_reader(path="/data/incedents.csv"):
+    """Read lines from CSV file path"""
     with open(path, "r") as f:
         reader = csv.reader(f)
         for row in reader:
@@ -20,6 +21,20 @@ def csv_reader(path="/data/incedents.csv"):
             yield convert(row)
 
 
-def csv_writer(path):
-    # TODO: finish this code
-    pass
+def coroutine(f):
+    def wrap_coro(*args,**kwargs):
+        gen = f(*args,**kwargs)
+        gen.send(None)
+        gen.send(['id', 'counts'])
+        return gen
+    return wrap_coro
+
+
+@coroutine
+def csv_writer(path="/data/counts.csv"):
+    """ Write data to a CSV file path"""
+    with open(path, "w", newline='') as csv_file:
+        writer = csv.writer(csv_file, delimiter=';')
+        while True:
+            data = yield
+            writer.writerow(data)
