@@ -8,6 +8,7 @@ services:
     image: ic:0.0.1
     volumes:
       - ./counter/code:/app
+      - ~/projects/data/inccounter:/data
     environment:
       - PYTHONUNBUFFERED=1
     command: python3 main.py
