@@ -18,6 +18,7 @@ services:
     image: dg:0.0.1
     volumes:
       - ./data_generator/code:/app
+      - ~/projects/data/inccounter:/data
     environment:
       - PYTHONUNBUFFERED=1
     command: python3 main.py
