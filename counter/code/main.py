@@ -3,11 +3,17 @@ from tools import get_config
 from compares import compare_time, compare_values
 
 
-def count_incedents(conf, dT=0.3):
+def count_incedents():
     """Главный механизм, выполнен в виде генератора для экономии памяти.
         :yield: расчетные данные по каждому значению в файле
     """
     # TODO: insert path to CSV file. Config data from command line.
+    dT = 0.3
+    # Getting configuration of programm
+    conf = get_config()
+    # Prepare writer to CSV file
+    writer = csv_writer()
+    # Working with data
     for sample in csv_reader():
         counter = 0
         for data in csv_reader():
@@ -22,13 +28,11 @@ def count_incedents(conf, dT=0.3):
                 continue
             # Increment counter
             counter += 1
-        yield [sample[0], counter]
+        # Write result to file
+        writer.send([ sample[0], counter])
+    # Close writer coroutine
+    writer.close()
 
 
 if __name__ == "__main__":
-    conf = get_config()
-    writer = csv_writer()
-    for val in count_incedents(conf):
-        print(f"Write next value: {val}")
-        writer.send(val)
-    writer.close()
+    count_incedents()
