@@ -11,7 +11,7 @@ services:
       - ~/projects/data/inccounter:/data
     environment:
       - PYTHONUNBUFFERED=1
-    command: python3 main.py
+    command: [ "python3", "main.py", "--input_file=/some/data", "--output_file=/some/new/data", "-dt=0.5" ]
 
   # Data Generator
   dg:

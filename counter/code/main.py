@@ -10,8 +10,8 @@ def count_incedents():
     # TODO: insert path to CSV file. Config data from command line.
     dT = 0.3
     # Getting configuration of programm
-    conf = get_config()
-    # Prepare writer to CSV file
+    # conf = get_config()
+    # Prepare CSV writer coroutine
     writer = csv_writer()
     # Working with data
     for sample in csv_reader():
@@ -35,4 +35,6 @@ def count_incedents():
 
 
 if __name__ == "__main__":
-    count_incedents()
+    # count_incedents()
+
+    print(get_config())

@@ -9,7 +9,7 @@ def convert(data):
     return data
 
 
-def csv_reader(path="/data/incedents.csv"):
+def csv_reader(path):
     """Read lines from CSV file path"""
     with open(path, "r") as f:
         reader = csv.reader(f)
@@ -31,7 +31,7 @@ def coroutine(f):
 
 
 @coroutine
-def csv_writer(path="/data/counts.csv"):
+def csv_writer(path):
     """ Write data to a CSV file path"""
     with open(path, "w", newline='') as csv_file:
         writer = csv.writer(csv_file, delimiter=';')
