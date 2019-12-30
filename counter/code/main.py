@@ -1,5 +1,6 @@
 from file_handlers import csv_reader, csv_writer
-from tools import get_config, compare_time, compare_values
+from tools import get_config
+from compares import compare_time, compare_values
 
 
 def count_incedents(conf, dT=0.3):
