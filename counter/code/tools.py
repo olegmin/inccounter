@@ -18,3 +18,9 @@ def get_config():
         'of': ns.output_file if ns.output_file else ns.otf,
         'dt': ns.delta_time if ns.delta_time else ns.dt
     }
+
+
+def print_config(c):
+    print("Start working with config params:")
+    for k,v in c.items():
+        print(f"\t- {k}: {v}")

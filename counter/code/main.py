@@ -1,5 +1,5 @@
 from file_handlers import csv_reader, csv_writer
-from tools import get_config
+from tools import get_config, print_config
 from compares import compare_time, compare_values
 
 
@@ -9,6 +9,7 @@ def count_incedents():
     """
     # Getting configuration of programm
     conf = get_config()
+    print_config(conf)
 
     # Prepare CSV writer coroutine
     writer = csv_writer(conf['of'])
