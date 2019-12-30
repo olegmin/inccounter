@@ -1,11 +1,5 @@
 from file_handlers import csv_reader, csv_writer
-
-
-def get_config():
-    """Читает командную строку.
-    :return: словарь с конфигурационными данными
-    """
-    return {}
+from tools import get_config
 
 
 def count_incedents(conf):
