@@ -12,8 +12,10 @@ def count_incedents(conf):
     """Главный механизм, обрабатывающий все события программы.
     :return: ничего, заставляет работать других
     """
-    pass
-
+    # TODO: insert path to CSV file. Config data from command line.
+    reader = csv_reader()
+    for data in reader:
+        print(f"{data}\n")
 
 
 if __name__ == "__main__":
