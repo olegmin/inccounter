@@ -1,0 +1,59 @@
+version: '3'
+
+
+services:
+  # WEB-server on Aiohttp
+  web:
+    build: ./web
+    image: web:0.3
+    depends_on:
+      - mongo
+    command: python3 main.py
+    volumes:
+      - ./web/appcode:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    ports:
+      - "8080:8080"
+    networks:
+      app_net:
+        aliases:
+          - web
+
+  # Data Handler
+  dh:
+    build: ./datahandler
+    image: dh:0.1
+    depends_on:
+      - mongo
+      - postgres
+    command: python3 main.py
+    volumes:
+      - ./datahandler/appcode:/app
+      - ~/Projects/storage/forex:/data
+    environment:
+      - PYTHONUNBUFFERED=1
+    networks:
+      app_net:
+        aliases:
+          - dh
+
+  # MongoDB
+  mongo:
+    image: mongo:latest
+    networks:
+      app_net:
+        aliases:
+          - mongo
+
+  # Postgres
+  postgres:
+    image: postgres:latest
+    networks:
+      app_net:
+        aliases:
+          - postgres
+
+networks:
+  app_net:
+    driver: bridge
