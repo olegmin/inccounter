@@ -1,4 +1,2 @@
-aiohttp
-aiohttp_jinja2
-motor
-pyyaml
+numpy
+pandas
