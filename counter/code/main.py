@@ -1,8 +1,9 @@
 from file_handlers import csv_reader, csv_writer
-from tools import get_config, print_config
+from tools import get_config, print_config, timer
 from compares import compare_time, compare_values
 
 
+@timer
 def count_incedents():
     """Главный механизм, выполнен в виде генератора для экономии памяти.
         :yield: расчетные данные по каждому значению в файле
