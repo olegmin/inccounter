@@ -7,16 +7,14 @@ def get_config():
     :return: словарь с конфигурационными данными
     """
     parser = argparse.ArgumentParser()
-    parser.add_argument('-inf', '--input_file', default="/data/incedents.csv", type=str)
-    parser.add_argument('-otf', '--output_file', default="/data/counts.csv", type=str)
-    parser.add_argument('-dt', '--delta_time', default=0.3, type=float)
+    parser.add_argument('-otf', '--output_file', default="/data/incedents.csv", type=str)
+    parser.add_argument('-dc', '--data_count', default=1000, type=int)
 
     ns = parser.parse_args(sys.argv[1:])
 
     return {
-        'input_file': ns.input_file if ns.input_file else ns.inf,
         'output_file': ns.output_file if ns.output_file else ns.otf,
-        'delta_time': ns.delta_time if ns.delta_time else ns.dt
+        'data_count': ns.delta_time if ns.delta_time else ns.dt
     }
 
 
