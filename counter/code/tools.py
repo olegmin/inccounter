@@ -14,9 +14,9 @@ def get_config():
     ns = parser.parse_args(sys.argv[1:])
 
     return {
-        'if': ns.input_file if ns.input_file else ns.inf,
-        'of': ns.output_file if ns.output_file else ns.otf,
-        'dt': ns.delta_time if ns.delta_time else ns.dt
+        'input_file': ns.input_file if ns.input_file else ns.inf,
+        'output_file': ns.output_file if ns.output_file else ns.otf,
+        'delta_time': ns.delta_time if ns.delta_time else ns.dt
     }
 
 
