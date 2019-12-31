@@ -24,7 +24,7 @@ def generate():
         # Count itterations and print status
         counter += 1
         if counter % 1000 == 0:
-            print(f"\t- Write {counter} / {conf['N']} lines.")
+            print(f"\twrite {counter} / {conf['N']} lines.")
     # Close writer coroutine
     writer.close()
 
