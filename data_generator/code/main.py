@@ -1,29 +1,25 @@
 # Libraries
 import numpy as np
-import pandas as pd
 from tools import csv_writer, get_config
-
-# Configuration
-M = 2
-N = 10
 
 
 # Main function
 def generate():
+    # Configuration programm
     conf = get_config()
-    writer = csv_writer()
+    # Prepare file writer
+    writer = csv_writer(conf['output_file'])
 
+    for i in range(conf['N']):
+        writer.send([
+            i,
+            np.random.randint(conf['M']),
+            np.random.randint(conf['M']),
+            np.random.randn(conf['N'])
+        ])
 
-# Data Frame
-df = pd.DataFrame({
-    'feature1': np.random.randint(M, size=(N,)),
-    'feature2': np.random.randint(M, size=(N,)),
-    'time': np.random.rand(N)
-})
-
-
-# Save data to CSV-file
-df.to_csv('/data/incedents.csv', index_label='id')
+    # Close writer coroutine
+    writer.close()
 
 
 if __name__ == "__main__":

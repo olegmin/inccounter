@@ -1,5 +1,6 @@
 import sys
 import argparse
+import csv
 
 
 def get_config():
@@ -8,13 +9,15 @@ def get_config():
     """
     parser = argparse.ArgumentParser()
     parser.add_argument('-otf', '--output_file', default="/data/incedents.csv", type=str)
-    parser.add_argument('-dc', '--data_count', default=1000, type=int)
+    parser.add_argument('-m', default=2, type=int)
+    parser.add_argument('-n', default=1000, type=int)
 
     ns = parser.parse_args(sys.argv[1:])
 
     return {
         'output_file': ns.output_file if ns.output_file else ns.otf,
-        'data_count': ns.delta_time if ns.delta_time else ns.dt
+        'M': ns.m,
+        'N': ns.n,
     }
 
 
