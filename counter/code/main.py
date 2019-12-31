@@ -15,10 +15,15 @@ def count_incedents():
     # Prepare CSV writer coroutine
     writer = csv_writer(conf['output_file'])
 
-    # Working with data
+    # Reading all data
+    all_data = []
     for sample in csv_reader(conf['input_file']):
+        all_data.append(sample)
+
+    # Working with data
+    for sample in all_data:
         counter = 0
-        for data in csv_reader(conf['input_file']):
+        for data in all_data:
             # Same ID
             if data[0] == sample[0]:
                 continue
@@ -30,8 +35,8 @@ def count_incedents():
                 continue
             # Increment counter
             counter += 1
-        # Write result to file
-        writer.send([ sample[0], counter])
+        # Write results to file
+        writer.send([sample[0], counter])
 
     # Close writer coroutine
     writer.close()
