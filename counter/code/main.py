@@ -12,17 +12,17 @@ def count_incedents():
     print_config(conf)
 
     # Prepare CSV writer coroutine
-    writer = csv_writer(conf['of'])
+    writer = csv_writer(conf['output_file'])
 
     # Working with data
-    for sample in csv_reader(conf['if']):
+    for sample in csv_reader(conf['input_file']):
         counter = 0
-        for data in csv_reader(conf['if']):
+        for data in csv_reader(conf['input_file']):
             # Same ID
             if data[0] == sample[0]:
                 continue
             # Not valid time
-            if not compare_time(conf['dt'], sample[3], data[3]):
+            if not compare_time(conf['delta_time'], sample[3], data[3]):
                 continue
             # Not matched values
             if not compare_values(sample, data):
