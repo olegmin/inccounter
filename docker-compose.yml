@@ -22,4 +22,4 @@ services:
       - ~/projects/data/inccounter:/data    # data directory
     environment:
       - PYTHONUNBUFFERED=1
-    command: [ "python3", "main.py", "--output_file=/data/incedents_new.csv", "-m=2", "-n=5000" ]
+    command: [ "python3", "main.py", "--output_file=/data/incedents.csv", "-m=2", "-n=1000000" ]
