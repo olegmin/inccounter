@@ -36,6 +36,6 @@ def timer(func):
         start_time = now_in_ms()
         func(*args, **kwargs)
         run_time = now_in_ms()-start_time
-        print(f"Finish in {run_time // 1000}.{(run_time % 100):03d} seconds.")
+        print(f"\n\nFinish in {run_time // 1000}.{(run_time % 100):03d} seconds.\n\n")
 
     return wrap_counter
