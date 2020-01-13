@@ -25,7 +25,7 @@ def coroutine(f):
     def wrap_coro(*args,**kwargs):
         gen = f(*args,**kwargs)
         gen.send(None)
-        gen.send(['id', 'counts'])
+        gen.send(['id', 'feature1', 'feature2', 'time'])
         return gen
     return wrap_coro
 
