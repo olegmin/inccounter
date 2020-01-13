@@ -12,7 +12,7 @@ def convert(data):
 def csv_reader(path):
     """Read lines from CSV file path"""
     with open(path, "r") as f:
-        reader = csv.reader(f)
+        reader = csv.reader(f, delimiter=';')
         for row in reader:
             # Head of table - continue reading file
             if 'id' in row:
