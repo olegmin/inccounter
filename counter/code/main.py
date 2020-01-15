@@ -4,15 +4,10 @@ import pandas as pd
 
 @timer
 def count_incedents():
-    """Главный механизм, выполнен в виде генератора для экономии памяти.
-        :yield: расчетные данные по каждому значению в файле
-    """
     # Getting configuration of programm
     conf = get_config()
-
     # Reading all data
     all_data = pd.read_csv(conf['input_file'], sep=';', index_col='id')
-
     # Calculate incedents
     dt = conf['delta_time']
     ci = []
@@ -30,13 +25,8 @@ def count_incedents():
             lenght, _ = valid_incedents.shape
         # Append number of incedents
         ci.append([lenght])
-        # TODO: delete
-        if index % 1000 == 0:
-            print(f"Calc {index} values")
-
     # Create DataFrame with counts
     cincd = pd.DataFrame(ci, columns=['counts'])
-
     # Save counted incedents to output file
     cincd.to_csv(conf['output_file'], index_label='id')
 
